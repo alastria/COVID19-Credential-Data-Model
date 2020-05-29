@@ -1,0 +1,160 @@
+{
+  "@context": ["https://www.w3.org/2018/credentials/v1"],
+  "id": "http://example.edu/credentials/1872",
+  "type": ["VerifiableCredential", "TestResultCredential"],
+  "issuer": "https://example.edu/issuers/565049",
+  "issuanceDate": "2010-01-01T19:73:24Z",
+  "credentialSubject": {
+    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+    "resource": {
+      "@context": ["http://hl7.org/fhir"],
+      "resourceType": "Bundle",
+      "id": "XXXX",
+      "type": "collection",
+
+      "entry": [
+        {
+          "fullUrl": "https://example.com/base/DiagnosticReport/YYYYY",
+          "resource": {
+            "resourceType": "DiagnosticReport",
+            "id": "YYYYY",
+
+            "status": "final",
+
+            "category": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "15220000",
+                    "display": "Laboratory test"
+                  },
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                    "code": "LAB"
+                  }
+                ]
+              }
+            ],
+
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "870361009",
+                  "display": "SARS-CoV-2 IgG"
+                }
+              ]
+            },
+
+            "subject": {
+              "reference": "Patient/f001",
+              "display": "Patient f001"
+            },
+
+            "issued": "2013-03-11T10:28:00+01:00",
+
+            "performer": [
+              {
+                "reference": "Organization/f201",
+                "display": "Laboratorio XXXX"
+              }
+            ],
+
+            "result": [
+              {
+                "reference": "Observation/ZZZZ",
+                "display": "Resultado de prueba rápida para detección de anticuerpos IgM e IgG frente a SARS-CoV-2 en sangre"
+              }
+            ],
+            "conclusion": "SARS-CoV-2: IgM e IgG totales negativo",
+            "conclusionCode": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "63741000122103",
+                    "display": "Test result of antibodies against SARS-CoV-2: total IgM and IgG negative (finding)"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "https://example.com/base/Observation/ZZZZ",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "ZZZZ",
+            "status": "final",
+            "category": {
+              "coding": {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            },
+
+            "code": {
+              "coding": {
+                "system": "http://snomed.info/sct",
+                "code": "870361009",
+                "display": "SARS-CoV-2 IgG"
+              }
+            },
+
+            "subject": {
+              "reference": "Patient/f001",
+              "display": "Patient f001"
+            },
+
+            "performer": [
+              {
+                "reference": "Organization/f201",
+                "display": "Laboratorio XXXX"
+              }
+            ],
+
+            "valueQuantity": {
+              "value": "70",
+              "unit": "AU/ml",
+              "system": "http://unitsofmeasure.org",
+              "code": "[AU_ml]"
+            },
+
+            "referenceRange": [
+              {
+                "high": {
+                  "value": 79
+                },
+                "meaning": {
+                  "text": "Indice inferior a 0.80 - Ausencia de niveles detectables de Anticuerpos"
+                }
+              },
+              {
+                "low": {
+                  "value": 80
+                },
+                "high": {
+                  "value": 109
+                },
+                "meaning": {
+                  "text": "Indice entre 0.80 - 1.09 - Zona limite"
+                }
+              },
+              {
+                "low": {
+                  "value": 110
+                },
+                "meaning": {
+                  "text": "Indice igual o superior a 1.10 - Presencia de Anticuerpos"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "proof": {}
+}
